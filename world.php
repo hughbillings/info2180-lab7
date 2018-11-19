@@ -15,20 +15,22 @@ $stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%".$query."%' ");
 $results = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 
 
-foreach($results as $row)
-{
-    print "Code: ".$row['code']."<br>"."Name: ".$row['name']."<br>"."Continent: ".$row['continent']."<br>"."Surface Area: ".$row['surface_area']."<br>"."Independence: ".$row['independence_year']."<br>"."Population ".$row['population']."<br>"."Life Expect: ".$row['life_expectancy']."<br>"."Gnp: ".$row['gnp']."<br>"."GNP OLD: ".$row['gnp_old']."<br>"."Local Name: ".$row['local_name']."<br>"."Government Form: ".$row['government_form']."<br>"."Head of State: ".$row['head_of_state']."<br>"."Capital: ".$row['capital']."<br>"."Code2: ".$row['code2'];
+echo '<ul>';
+foreach ($results as $row) {
+  echo '<li>' . $row['name'] . ' is ruled by ' . $row['head_of_state'] . '</li>';
 }
+echo '</ul>';
 
 if ($query === 'true')
 {
     $stm = $conn->query("SELECT * FROM countries");
     $result = $stm -> fetchAll(PDO::FETCH_ASSOC);
     
-    foreach($result as $row)
-    {
-         print "Code: ".$row['code']."<br>"."Name: ".$row['name']."<br>"."Continent: ".$row['continent']."<br>"."Surface Area: ".$row['surface_area']."<br>"."Independence: ".$row['independence_year']."<br>"."Population ".$row['population']."<br>"."Life Expect: ".$row['life_expectancy']."<br>"."Gnp: ".$row['gnp']."<br>"."GNP OLD: ".$row['gnp_old']."<br>"."Local Name: ".$row['local_name']."<br>"."Government Form: ".$row['government_form']."<br>"."Head of State: ".$row['head_of_state']."<br>"."Capital: ".$row['capital']."<br>"."Code2: ".$row['code2']."<br>"."<br>";
-    }
+    echo '<ul>';
+foreach ($result as $row) {
+  echo '<li>' . $row['name'] . ' is ruled by ' . $row['head_of_state'] . '</li>';
+}
+echo '</ul>';
 }
 
 
